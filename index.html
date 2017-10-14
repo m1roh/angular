@@ -2,37 +2,68 @@
 <html ng-app="app">
 
 <head>
-    <meta charset="utf-8">
-    <title>Angular Project</title>
+  <meta charset="utf-8">
+  <title>Angular Project</title>
+  <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/cyborg/bootstrap.min.css" rel="stylesheet" integrity="sha384-D9XILkoivXN+bcvB2kSOowkIvIcBbNdoDQvfBNsxYAIieZbx8/SI4NeUvrRGCpDi"
+    crossorigin="anonymous">
 </head>
 
-<body ng-controller='mainController as vm'>
+<body ng-controller='mainController as vm' class="container-fluid">
 
-    First Name:
-    <input type="text" ng-model="vm.firstName">
-    <br> Last Name:
-    <input type="text" ng-model="vm.lastName">
-    <br> Email:
-    <input type="text" ng-model="vm.email">
-    <br>
-    <button ng-click="showme=true">Ok</button>
+  <h1 class="text-center">Angular - Data-binding</h1>
 
-    <table ng-show="showme">
+  <form class="form-horizontal container">
+    <legend>Add a user</legend>
+    <div class="form-group">
+      <label for="firstName" class="col-lg-2 controlLabel">First Name</label>
+      <div class="col-lg-10">
+        <input type="text" ng-model="vm.firstName" class="form-control" id="firstName" name="firstName" placeholder="First Name">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="lastName" class="col-lg-2 controlLabel">Last Name</label>
+      <div class="col-lg-10">
+        <input type="text" ng-model="vm.lastName" class="form-control" id="lastName" name="lastName" placeholder="Last Name">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="email" class="col-lg-2 controlLabel">Email</label>
+      <div class="col-lg-10">
+        <input type="text" ng-model="vm.email" class="form-control" id="email" name="email" placeholder="Email">
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-lg-2">
+        <button ng-click="vm.add()" class="btn btn-primary">Submit</button>
+      </div>
+    </div>
+  </form>
+
+  <div class="container">
+    <table class="table table-hover">
+      <thead>
         <tr>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Email</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Email</th>
         </tr>
-        <tr>
-            <th>{{ vm.firstName }}</th>
-            <th>{{ vm.lastName }}</th>
-            <th>{{ vm.email }}</th>
+      </thead>
+
+      <tbody>
+        <tr ng-repeat="user in vm.users">
+          <td>{{ user[0] }}</td>
+          <td>{{ user[1] }}</td>
+          <td>{{ user[2] }}</td>
         </tr>
+      </tbody>
+
     </table>
+  </div>
 
-    <script src="js/libs/angular.min.js"></script>
-    <script src="js/controllers/mainController.js"></script>
-    <script src="js/app.js"></script>
+
+  <script src="js/libs/angular.min.js"></script>
+  <script src="js/controllers/mainController.js"></script>
+  <script src="js/app.js"></script>
 </body>
 
 </html>
