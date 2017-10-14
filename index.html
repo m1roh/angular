@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html ng-app="app">
+
+<head>
+    <meta charset="utf-8">
+    <title>Angular Project</title>
+</head>
+
+<body ng-controller='mainController as vm'>
+
+    First Name:
+    <input type="text" ng-model="vm.firstName">
+    <br> Last Name:
+    <input type="text" ng-model="vm.lastName">
+    <br> Email:
+    <input type="text" ng-model="vm.email">
+    <br>
+    <button ng-click="showme=true">Ok</button>
+
+    <table ng-show="showme">
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+        </tr>
+        <tr>
+            <th>{{ vm.firstName }}</th>
+            <th>{{ vm.lastName }}</th>
+            <th>{{ vm.email }}</th>
+        </tr>
+    </table>
+
+    <script src="js/libs/angular.min.js"></script>
+    <script src="js/controllers/mainController.js"></script>
+    <script src="js/app.js"></script>
+</body>
+
+</html>
